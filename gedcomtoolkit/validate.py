@@ -15,6 +15,7 @@ from datetime import date as _date
 import networkx as nx
 
 from gedcomtoolkit.dates import extract_year
+from gedcomtoolkit.graph import parent_only_subgraph
 from gedcomtoolkit.models import FamilyTree
 
 MAX_PLAUSIBLE_AGE = 110
@@ -37,9 +38,7 @@ class ValidationIssue:
 
 
 def _cycle_check(tree: FamilyTree, g: nx.DiGraph) -> list[ValidationIssue]:
-    parent_edges = [(u, v) for u, v, d in g.edges(data=True) if d["relation"] == "parent"]
-    parent_graph = nx.DiGraph(parent_edges)
-    parent_graph.add_nodes_from(g.nodes())
+    parent_graph = parent_only_subgraph(g)
 
     if nx.is_directed_acyclic_graph(parent_graph):
         return []

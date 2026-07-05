@@ -43,3 +43,17 @@ def build_graph(tree: FamilyTree) -> nx.DiGraph:
                 g.add_edge(fam.wife_id, fam.husband_id, relation="spouse")
 
     return g
+
+
+def parent_only_subgraph(g: nx.DiGraph) -> nx.DiGraph:
+    """
+    Return a subgraph containing only parent -> child edges (spouse edges
+    dropped). Used anywhere descent needs to be traversed in isolation:
+    cycle detection, descendant counts, generation depth.
+    """
+    parent_graph = nx.DiGraph()
+    parent_graph.add_nodes_from(g.nodes())
+    for u, v, d in g.edges(data=True):
+        if d["relation"] == "parent":
+            parent_graph.add_edge(u, v)
+    return parent_graph

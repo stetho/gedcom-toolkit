@@ -1,0 +1,24 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.coverage
+htmlcov/
+.venv/
+venv/
+build/
+dist/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Real family data -- never commit actual research to a public repo.
+# Only data/sample/ (public-domain / synthetic test fixtures) is tracked.
+data/private/
+*.ged
+!data/sample/*.ged
+
+# Editor / OS
+.vscode/
+.DS_Store

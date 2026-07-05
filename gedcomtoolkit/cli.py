@@ -13,7 +13,7 @@ from __future__ import annotations
 
 import click
 
-from gedcomtoolkit.commands import stats
+from gedcomtoolkit.commands import findid, stats, validate
 
 
 @click.group()
@@ -24,6 +24,8 @@ def cli():
 
 
 cli.add_command(stats.command, name="stats")
+cli.add_command(validate.command, name="validate")
+cli.add_command(findid.command, name="findid")
 
 
 if __name__ == "__main__":

@@ -14,7 +14,7 @@ GEDCOM is the standard file format genealogy software uses to store family
 trees. It's a genuinely awkward format: a large amount of loosely structured
 text data, riddled with real-world data quality problems (missing dates,
 duplicate people, impossible relationships), and hard to query directly. This
-project treats a family tree for what it actually is — a directed graph — and
+project treats a family tree for what it actually is - a directed graph - and
 builds tools on top of that idea.
 
 ## What it does
@@ -26,16 +26,16 @@ gedcom stats family.ged
 prints summary statistics about a family tree: how many people, how many
 families, how many disconnected branches, how much data is missing.
 
-More commands are planned — see [Roadmap](#roadmap) below. The CLI is
+More commands are planned - see [Roadmap](#roadmap) below. The CLI is
 structured so that adding a new one is a small, self-contained change (see
 `gedcomtoolkit/commands/`).
 
 ## Why a graph?
 
 A family tree is naturally a directed graph: parent → child edges capture
-descent, and that structure supports real graph-theory questions —
+descent, and that structure supports real graph-theory questions -
 connectivity, shortest paths between relatives, cycle detection (someone
-recorded as their own ancestor is a data error, and also a graph cycle) — for
+recorded as their own ancestor is a data error, and also a graph cycle) - for
 free, using [networkx](https://networkx.org/).
 
 ## Installation
@@ -55,7 +55,7 @@ gedcom stats data/sample/sample.ged
 ## Sample data
 
 `data/sample/sample.ged` is a small, synthetic five-person tree used for
-tests and examples. No real family data is stored in this repository —
+tests and examples. No real family data is stored in this repository -
 personal GEDCOM files are excluded via `.gitignore`.
 
 ## Development
@@ -67,26 +67,26 @@ pytest
 
 ## Roadmap
 
-- [ ] `gedcom validate` — detect data problems: cycles, death-before-birth,
+- [ ] `gedcom validate` - detect data problems: cycles, death-before-birth,
       implausible ages, orphaned records
-- [ ] `gedcom rn` ("research next") — a weighted list of who to research
+- [ ] `gedcom rn` ("research next") - a weighted list of who to research
       next, based on missing data and how many descendants are affected
-- [ ] `gedcom diff` — compare two GEDCOM files (e.g. before/after an import)
-- [ ] `gedcom surnames` — surname frequency and spelling-variant clustering
-- [ ] `gedcom timeline` — chronological view of events, useful for spotting
+- [ ] `gedcom diff` - compare two GEDCOM files (e.g. before/after an import)
+- [ ] `gedcom surnames` - surname frequency and spelling-variant clustering
+- [ ] `gedcom timeline` - chronological view of events, useful for spotting
       inconsistencies
-- [ ] `gedcom fan` — export a fan chart or descendant tree as SVG
-- [ ] `gedcom geo` — plot migration paths across generations, where places
+- [ ] `gedcom fan` - export a fan chart or descendant tree as SVG
+- [ ] `gedcom geo` - plot migration paths across generations, where places
       are recorded
-- [ ] `gedcom export --format graphml` — hand off to Gephi for visualisation
-- [ ] `gedcom merge` — fuzzy-match probable duplicate individuals across
+- [ ] `gedcom export --format graphml` - hand off to Gephi for visualisation
+- [ ] `gedcom merge` - fuzzy-match probable duplicate individuals across
       two files
 
 ## Notebooks
 
-`notebooks/` contains exploratory analysis of sample GEDCOM data — the
+`notebooks/` contains exploratory analysis of sample GEDCOM data - the
 first pass at ideas before they're solidified into tested package code.
 
 ## License
 
-MIT — see [LICENSE](LICENSE).
+MIT - see [LICENSE](LICENSE).

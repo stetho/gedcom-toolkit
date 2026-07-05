@@ -65,23 +65,31 @@ pip install -e ".[dev]"
 pytest
 ```
 
-## Roadmap
-
 - [ ] `gedcom validate` - detect data problems: cycles, death-before-birth,
-      implausible ages, orphaned records
-- [ ] `gedcom rn` ("research next") - a weighted list of who to research
+      implausible ages, orphaned records. Built first, deliberately: `rn`
+      produces a prioritised research list, and that list is only trustworthy
+      if the underlying tree isn't already broken.
+- [ ] `gedcom rn` ("research next") — a weighted list of who to research
       next, based on missing data and how many descendants are affected
-- [ ] `gedcom diff` - compare two GEDCOM files (e.g. before/after an import)
-- [ ] `gedcom surnames` - surname frequency and spelling-variant clustering
-- [ ] `gedcom timeline` - chronological view of events, useful for spotting
+- [ ] `gedcom findid <name>` - GEDCOM names aren't unique (e.g. a
+      great-grandfather, his father, and two distant cousins can all share
+      a name); this looks up every individual matching a name and returns
+      their unique xref_id plus dates, e.g. `I1234 Bob Smith 28-AUG-1908`.
+      A prerequisite for `findrelationship` below.
+- [ ] `gedcom findrelationship <id-or-name> <id-or-name>` — find the
+      relationship path between two individuals. Accepts an xref_id
+      directly, or falls back to `findid`'s disambiguation list if a name
+      is ambiguous.
+- [ ] `gedcom diff` — compare two GEDCOM files (e.g. before/after an import)
+- [ ] `gedcom surnames` — surname frequency and spelling-variant clustering
+- [ ] `gedcom timeline` — chronological view of events, useful for spotting
       inconsistencies
-- [ ] `gedcom fan` - export a fan chart or descendant tree as SVG
-- [ ] `gedcom geo` - plot migration paths across generations, where places
+- [ ] `gedcom fan` — export a fan chart or descendant tree as SVG
+- [ ] `gedcom geo` — plot migration paths across generations, where places
       are recorded
-- [ ] `gedcom export --format graphml` - hand off to Gephi for visualisation
-- [ ] `gedcom merge` - fuzzy-match probable duplicate individuals across
-      two files
-
+- [ ] `gedcom export --format graphml` — hand off to Gephi for visualisation
+- [ ] `gedcom merge` — fuzzy-match probable duplicate individuals across
+      two files"""
 ## Notebooks
 
 `notebooks/` contains exploratory analysis of sample GEDCOM data - the

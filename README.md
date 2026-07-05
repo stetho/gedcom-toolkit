@@ -65,18 +65,22 @@ pip install -e ".[dev]"
 pytest
 ```
 
-- [ ] `gedcom validate` - detect data problems: cycles, death-before-birth,
+- [X] `gedcom validate` - detect data problems: cycles, death-before-birth,
       implausible ages, orphaned records. Built first, deliberately: `rn`
       produces a prioritised research list, and that list is only trustworthy
       if the underlying tree isn't already broken.
-- [ ] `gedcom rn` ("research next") — a weighted list of who to research
+- [X] `gedcom rn` ("research next") — a weighted list of who to research
       next, based on missing data and how many descendants are affected
-- [ ] `gedcom findid <name>` - GEDCOM names aren't unique (e.g. a
+- [X] `gedcom findid <name>` - GEDCOM names aren't unique (e.g. a
       great-grandfather, his father, and two distant cousins can all share
       a name); this looks up every individual matching a name and returns
       their unique xref_id plus dates, e.g. `I1234 Bob Smith 28-AUG-1908`.
       A prerequisite for `findrelationship` below.
-- [ ] `gedcom findrelationship <id-or-name> <id-or-name>` — find the
+- [x] `gedcom sources` — percentage of individuals and events with no
+      source citation attached. A measure of how well-evidenced the tree
+      is, not just how complete it is -- important for the tree to be
+      credible to other researchers, not just populated.
+- [X] `gedcom findrelationship <id-or-name> <id-or-name>` — find the
       relationship path between two individuals. Accepts an xref_id
       directly, or falls back to `findid`'s disambiguation list if a name
       is ambiguous.

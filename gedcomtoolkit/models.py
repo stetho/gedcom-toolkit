@@ -20,6 +20,8 @@ class Individual:
     sex: str | None = None  # "M", "F", or None
     birth_date: str | None = None  # kept as raw GEDCOM date string for now
     death_date: str | None = None
+    birth_sourced: bool = False
+    death_sourced: bool = False
     family_as_child: str | None = None  # xref_id of FAM they're a child in
     families_as_spouse: list[str] = field(default_factory=list)  # xref_ids of FAM
 
@@ -40,6 +42,7 @@ class Family:
     husband_id: str | None = None
     wife_id: str | None = None
     marriage_date: str | None = None
+    marriage_sourced: bool = False
     child_ids: list[str] = field(default_factory=list)
 
 

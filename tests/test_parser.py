@@ -38,3 +38,13 @@ def test_individual_family_membership(sample_tree):
     alice = sample_tree.get_individual("@I3@")
     assert alice.family_as_child == "@F1@"
     assert alice.families_as_spouse == ["@F2@"]
+
+
+def test_source_flags_false_when_no_sour_tags(sample_tree):
+    """sample.ged has no SOUR tags at all -- everything should parse as unsourced."""
+    john = sample_tree.get_individual("@I1@")
+    assert john.birth_sourced is False
+    assert john.death_sourced is False
+
+    fam1 = sample_tree.get_family("@F1@")
+    assert fam1.marriage_sourced is False

@@ -32,6 +32,8 @@ def parse_gedcom(path: str | Path) -> FamilyTree:
                 sex=indi.sex,
                 birth_date=_date_str(birt),
                 death_date=_date_str(deat),
+                birth_sourced=_has_source(birt),
+                death_sourced=_has_source(deat),
                 family_as_child=famc[0].xref_id if famc else None,
                 families_as_spouse=[f.xref_id for f in fams],
             )
@@ -47,6 +49,7 @@ def parse_gedcom(path: str | Path) -> FamilyTree:
                 husband_id=husb.xref_id if husb else None,
                 wife_id=wife.xref_id if wife else None,
                 marriage_date=_date_str(marr),
+                marriage_sourced=_has_source(marr),
                 child_ids=[c.xref_id for c in children],
             )
 
@@ -63,6 +66,13 @@ def _date_str(event_record) -> str | None:
         return None
     value = event_record.sub_tag_value("DATE")
     return str(value) if value is not None else None
+
+
+def _has_source(event_record) -> bool:
+    """Whether a BIRT/DEAT/MARR sub-record has a SOUR citation attached."""
+    if event_record is None:
+        return False
+    return event_record.sub_tag("SOUR") is not None
 
 
 def _split_name(indi) -> tuple[str | None, str | None]:

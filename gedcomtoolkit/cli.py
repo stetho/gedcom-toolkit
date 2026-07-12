@@ -13,7 +13,7 @@ from __future__ import annotations
 
 import click
 
-from gedcomtoolkit.commands import findid, findrelationship, rn, sources, stats, validate
+from gedcomtoolkit.commands import findid, findrelationship, places, rn, sources, stats, validate
 
 
 @click.group()
@@ -29,6 +29,7 @@ cli.add_command(findid.command, name="findid")
 cli.add_command(findrelationship.command, name="findrelationship")
 cli.add_command(rn.command, name="rn")
 cli.add_command(sources.command, name="sources")
+cli.add_command(places.command, name="places")
 
 
 if __name__ == "__main__":

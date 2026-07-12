@@ -34,6 +34,8 @@ def parse_gedcom(path: str | Path) -> FamilyTree:
                 death_date=_date_str(deat),
                 birth_sourced=_has_source(birt),
                 death_sourced=_has_source(deat),
+                birth_place=_place_str(birt),
+                death_place=_place_str(deat),
                 family_as_child=famc[0].xref_id if famc else None,
                 families_as_spouse=[f.xref_id for f in fams],
             )
@@ -50,6 +52,7 @@ def parse_gedcom(path: str | Path) -> FamilyTree:
                 wife_id=wife.xref_id if wife else None,
                 marriage_date=_date_str(marr),
                 marriage_sourced=_has_source(marr),
+                marriage_place=_place_str(marr),
                 child_ids=[c.xref_id for c in children],
             )
 
@@ -73,6 +76,14 @@ def _has_source(event_record) -> bool:
     if event_record is None:
         return False
     return event_record.sub_tag("SOUR") is not None
+
+
+def _place_str(event_record) -> str | None:
+    """Raw PLAC value on a BIRT/DEAT/MARR sub-record, if present."""
+    if event_record is None:
+        return None
+    value = event_record.sub_tag_value("PLAC")
+    return str(value) if value else None
 
 
 def _split_name(indi) -> tuple[str | None, str | None]:

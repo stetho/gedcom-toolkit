@@ -1,0 +1,83 @@
+0 HEAD
+1 SOUR gedcom-toolkit
+1 GEDC
+2 VERS 5.5.1
+2 FORM LINEAGE-LINKED
+1 CHAR UTF-8
+0 @I1@ INDI
+1 NAME Person /Number1/
+1 BIRT
+2 PLAC Croydon
+0 @I2@ INDI
+1 NAME Person /Number2/
+1 BIRT
+2 PLAC Croydon
+0 @I3@ INDI
+1 NAME Person /Number3/
+1 BIRT
+2 PLAC Croydon, Surrey
+0 @I4@ INDI
+1 NAME Person /Number4/
+1 BIRT
+2 PLAC Croydon, Surrey
+0 @I5@ INDI
+1 NAME Person /Number5/
+1 BIRT
+2 PLAC Croydon, Surrey
+0 @I6@ INDI
+1 NAME Person /Number6/
+1 BIRT
+2 PLAC Croydon, England
+0 @I7@ INDI
+1 NAME Person /Number7/
+1 BIRT
+2 PLAC Croydon, England
+0 @I8@ INDI
+1 NAME Person /Number8/
+1 BIRT
+2 PLAC Croydon,, England
+0 @I9@ INDI
+1 NAME Person /Number9/
+1 BIRT
+2 PLAC Croydon, Greater London
+0 @I10@ INDI
+1 NAME Person /Number10/
+1 BIRT
+2 PLAC Croydon, Greater London
+0 @I11@ INDI
+1 NAME Person /Number11/
+1 BIRT
+2 PLAC Croydon, Greater London
+0 @I12@ INDI
+1 NAME Person /Number12/
+1 BIRT
+2 PLAC Croydon, Greater London
+0 @I13@ INDI
+1 NAME Person /Number13/
+1 BIRT
+2 PLAC Croydon, Surrey, England
+0 @I14@ INDI
+1 NAME Person /Number14/
+1 BIRT
+2 PLAC London
+0 @I15@ INDI
+1 NAME Person /Number15/
+1 BIRT
+2 PLAC London, England
+0 @I16@ INDI
+1 NAME Person /Number16/
+1 BIRT
+2 PLAC London, England
+0 @I17@ INDI
+1 NAME Person /Number17/
+1 BIRT
+2 PLAC Brighton, Sussex, England
+0 @I18@ INDI
+1 NAME Person /Number18/
+1 BIRT
+2 PLAC Brighton, Sussex, England
+0 @I19@ INDI
+1 NAME Person /Number19/
+1 BIRT
+2 PLAC Brighton, Sussex, England
+0 TRLR

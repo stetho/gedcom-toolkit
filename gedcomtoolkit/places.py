@@ -20,6 +20,13 @@ history: a variant that conflicts (like a genuine county change) simply
 won't be a subsequence of anything, however often it's used, and gets
 reported as a conflict for manual review rather than silently merged or
 silently outvoted.
+
+Note: because selection is purely structural, a rare, oddly-ordered
+one-off entry can end up as the suggested canonical if it happens to be a
+superset of every other variant present -- that's exactly what should
+happen structurally, but it's still worth a human glancing at it, so the
+canonical's own usage count is always reported alongside the suggestion
+rather than hidden.
 """
 
 from __future__ import annotations
@@ -48,6 +55,7 @@ def is_subsequence(shorter: Segments, longer: Segments) -> bool:
 class PlaceSuggestion:
     primary_key: str
     suggested_canonical: str
+    canonical_count: int
     confidence: float
     compatible_variants: list[tuple[str, int]]  # (display string, usage count)
     conflicting_variants: list[tuple[str, int]]
@@ -133,6 +141,7 @@ def find_place_suggestions(tree: FamilyTree) -> list[PlaceSuggestion]:
             PlaceSuggestion(
                 primary_key=primary_key,
                 suggested_canonical=display_forms[best_segments],
+                canonical_count=variant_counts[best_segments],
                 confidence=confidence,
                 compatible_variants=sorted(compatible, key=lambda x: -x[1]),
                 conflicting_variants=sorted(conflicting, key=lambda x: -x[1]),

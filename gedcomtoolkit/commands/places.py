@@ -42,4 +42,16 @@ def command(gedcom_file: str):
             table.add_row(display, str(count), "[yellow]conflict -- review manually[/yellow]")
 
         console.print(table)
-        console.print(f"Confidence: {suggestion.confidence:.0f}%\n")
+
+        total_compatible = sum(count for _d, count in suggestion.compatible_variants)
+        console.print(
+            f"Confidence: {suggestion.confidence:.0f}%  "
+            f"(this exact form appears {suggestion.canonical_count} time(s) in the file)"
+        )
+        if suggestion.canonical_count < total_compatible:
+            console.print(
+                "[dim]Note: the suggested form is used less often than the variants "
+                "it's replacing -- worth checking it isn't itself a one-off typo "
+                "before applying it.[/dim]"
+            )
+        console.print()

@@ -78,6 +78,7 @@ def test_finds_croydon_and_london_clusters_only(suggestions):
 def test_croydon_suggested_canonical(suggestions):
     croydon = next(s for s in suggestions if s.primary_key == "croydon")
     assert croydon.suggested_canonical == "Croydon, Surrey, England"
+    assert croydon.canonical_count == 1  # rare form -- worth surfacing, not hiding
 
 
 def test_croydon_confidence(suggestions):
@@ -103,6 +104,7 @@ def test_croydon_conflicting_variant_is_greater_london(suggestions):
 def test_london_cluster(suggestions):
     london = next(s for s in suggestions if s.primary_key == "london")
     assert london.suggested_canonical == "London, England"
+    assert london.canonical_count == 2
     assert london.confidence == 100.0
     assert london.compatible_variants == [("London", 1)]
     assert london.conflicting_variants == []

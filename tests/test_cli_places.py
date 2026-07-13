@@ -27,3 +27,11 @@ def test_places_excludes_single_variant_place():
     runner = CliRunner()
     result = runner.invoke(cli, ["places", str(PLACES_GEDCOM)])
     assert "Brighton" not in result.output
+
+
+def test_places_warns_when_canonical_is_rarer_than_components():
+    runner = CliRunner()
+    result = runner.invoke(cli, ["places", str(PLACES_GEDCOM)])
+    # Croydon's suggested canonical is used only once, vs 8 uses of its components
+    assert "appears 1 time(s)" in result.output
+    assert "worth checking" in result.output.lower()

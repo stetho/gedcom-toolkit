@@ -88,6 +88,18 @@ rewrites the file. Some variants reflect genuine historical differences
 are reported separately as conflicts for manual review rather than
 silently merged, however common they are in the file.
 
+```bash
+gedcom duplicates family.ged
+```
+
+flags probable duplicate individuals *within a single file* -- grouped by
+exact name match, then scored by birth-year gap and whether they share the
+same parents. Deliberately doesn't assert "duplicate": same name and a
+close birth year can also mean a genuine namesake (a child named after an
+earlier sibling who died young, common in Victorian-era records), so each
+pair comes with a note explaining what that pattern usually indicates
+rather than a bare confidence number.
+
 More commands are planned — see [Roadmap](#roadmap) below. The CLI is
 structured so that adding a new one is a small, self-contained change (see
 `gedcomtoolkit/commands/`).
@@ -157,9 +169,11 @@ pytest
       reflect genuine historical boundary changes (Croydon moved from
       Surrey into Greater London in 1965) rather than messy data, so
       merging them could erase real information.
-- [ ] `gedcom duplicates` — flag probable duplicate individuals *within
+- [x] `gedcom duplicates` — flag probable duplicate individuals *within
       a single file* (matching name + close dates) -- distinct from
-      `merge` below, which compares *two* files.
+      `merge` below, which compares *two* files. Reports signals (birth-year
+      gap, shared parents) with an explanatory note rather than a bare
+      verdict, since a namesake sibling can look identical to a duplicate.
 - [ ] `gedcom completeness` — percentage of individuals with both/one/no
       parents linked, broken down per generation.
 - [ ] `gedcom diff` — compare two GEDCOM files (e.g. before/after an import)

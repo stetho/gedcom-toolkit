@@ -1,0 +1,59 @@
+0 HEAD
+1 SOUR gedcom-toolkit
+1 GEDC
+2 VERS 5.5.1
+2 FORM LINEAGE-LINKED
+1 CHAR UTF-8
+0 @I1@ INDI
+1 NAME Someone /Duplicate/
+1 BIRT
+2 DATE 1900
+0 @I2@ INDI
+1 NAME Someone /Duplicate/
+1 BIRT
+2 DATE 1900
+0 @I3@ INDI
+1 NAME Namesake /Child/
+1 BIRT
+2 DATE 1920
+1 FAMC @F1@
+0 @I4@ INDI
+1 NAME Namesake /Child/
+1 BIRT
+2 DATE 1923
+1 FAMC @F1@
+0 @I5@ INDI
+1 NAME Missingdata /Twin/
+1 FAMC @F2@
+0 @I6@ INDI
+1 NAME Missingdata /Twin/
+1 BIRT
+2 DATE 1955
+1 FAMC @F2@
+0 @I7@ INDI
+1 NAME Far /Apart/
+1 BIRT
+2 DATE 1800
+0 @I8@ INDI
+1 NAME Far /Apart/
+1 BIRT
+2 DATE 1950
+0 @I9@ INDI
+1 NAME Solo /Person/
+1 BIRT
+2 DATE 1970
+0 @I10@ INDI
+1 NAME Case /Test/
+1 BIRT
+2 DATE 1980
+0 @I11@ INDI
+1 NAME CASE /TEST/
+1 BIRT
+2 DATE 1980
+0 @F1@ FAM
+1 CHIL @I3@
+1 CHIL @I4@
+0 @F2@ FAM
+1 CHIL @I5@
+1 CHIL @I6@
+0 TRLR

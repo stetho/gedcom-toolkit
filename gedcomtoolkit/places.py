@@ -39,9 +39,16 @@ Segments = tuple[str, ...]
 
 
 def clean_segments(raw: str) -> Segments:
-    """Split on commas, strip whitespace, drop empty segments (handles
-    doubled commas like "Croydon,, England")."""
-    return tuple(s.strip() for s in raw.split(",") if s.strip())
+    """Split on commas, strip whitespace and trailing periods, drop empty
+    segments. Handles doubled commas ("Croydon,, England") and a trailing
+    full stop on a segment ("Hampshire.") -- both pure formatting noise,
+    not genuine differences."""
+    segments = []
+    for s in raw.split(","):
+        cleaned = s.strip().rstrip(".").strip()
+        if cleaned:
+            segments.append(cleaned)
+    return tuple(segments)
 
 
 def is_subsequence(shorter: Segments, longer: Segments) -> bool:

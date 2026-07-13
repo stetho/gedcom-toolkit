@@ -43,6 +43,12 @@ def test_clean_segments_strips_and_drops_empty():
     assert clean_segments("") == ()
 
 
+def test_clean_segments_strips_trailing_period():
+    assert clean_segments("Elson, Gosport, Hampshire.") == ("Elson", "Gosport", "Hampshire")
+    # internal periods (mid-segment) are untouched
+    assert clean_segments("St. Albans, Hertfordshire") == ("St. Albans", "Hertfordshire")
+
+
 def test_is_subsequence_basic():
     assert is_subsequence(("Croydon",), ("Croydon", "Surrey", "England")) is True
     assert is_subsequence(("Croydon", "England"), ("Croydon", "Surrey", "England")) is True

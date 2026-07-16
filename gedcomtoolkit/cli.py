@@ -14,6 +14,7 @@ from __future__ import annotations
 import click
 
 from gedcomtoolkit.commands import (
+    completeness,
     duplicates,
     findid,
     findrelationship,
@@ -40,6 +41,7 @@ cli.add_command(rn.command, name="rn")
 cli.add_command(sources.command, name="sources")
 cli.add_command(places.command, name="places")
 cli.add_command(duplicates.command, name="duplicates")
+cli.add_command(completeness.command, name="completeness")
 
 
 if __name__ == "__main__":

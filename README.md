@@ -100,6 +100,18 @@ earlier sibling who died young, common in Victorian-era records), so each
 pair comes with a note explaining what that pattern usually indicates
 rather than a bare confidence number.
 
+```bash
+gedcom completeness family.ged
+```
+
+reports parent-linkage completeness broken down by generation: what
+percentage of individuals have both parents linked, one, or none.
+"Generation" means depth from the nearest known root in each individual's
+own line, not absolute chronological era, so generation 0 always shows
+100% "no parents" by definition -- that's structural, not a finding.
+Requires an acyclic tree, so run `gedcom validate` first if that hasn't
+been confirmed recently.
+
 More commands are planned — see [Roadmap](#roadmap) below. The CLI is
 structured so that adding a new one is a small, self-contained change (see
 `gedcomtoolkit/commands/`).
@@ -174,8 +186,9 @@ pytest
       `merge` below, which compares *two* files. Reports signals (birth-year
       gap, shared parents) with an explanatory note rather than a bare
       verdict, since a namesake sibling can look identical to a duplicate.
-- [ ] `gedcom completeness` — percentage of individuals with both/one/no
-      parents linked, broken down per generation.
+- [x] `gedcom completeness` — percentage of individuals with both/one/no
+      parents linked, broken down per generation (depth from nearest
+      known root, not absolute era). Requires an acyclic tree.
 - [ ] `gedcom diff` — compare two GEDCOM files (e.g. before/after an import)
 - [ ] `gedcom surnames` — surname frequency and spelling-variant clustering
 - [ ] `gedcom timeline` — chronological view of events, useful for spotting
